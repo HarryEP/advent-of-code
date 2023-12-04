@@ -6,6 +6,7 @@ digits = ["one", "two", "three", "four",
 
 def get_first_digit(word: str) -> str:
     '''returns first digit of the word'''
+
     for letter in word:
         if letter.isdigit():
             return letter
