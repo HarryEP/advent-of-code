@@ -21,5 +21,5 @@ def get_last_digit(word: str) -> str:
 
 
 if __name__ == '__main__':
-    data = read_file('day_1/input.txt')
+    data = read_file('day_1/sample.txt')
     print(calculate_sum(data))
