@@ -32,5 +32,5 @@ def calculate_sum(data: list[str]) -> int:
 
 
 if __name__ == '__main__':
-    data = read_file('day_1/sample.txt')
+    data = read_file('day_1/input.txt')
     print(calculate_sum(data))
