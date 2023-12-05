@@ -1,26 +1,19 @@
-from part_1 import read_file, calculate_sum
+from part_1 import read_file, calculate_sum, get_first_digit, get_last_digit
 
 digits = ["one", "two", "three", "four",
           "five", "six", "seven", "eight", "nine"]
 
 
-def get_first_digit(word: str) -> str:
-    '''returns first digit of the word'''
-
-    for letter in word:
-        if letter.isdigit():
-            return letter
-    raise ValueError(f"No digits in word {word}")
-
-
-def get_last_digit(word: str) -> str:
-    '''returns last digit of the word'''
-    for i in range(len(word)-1, -1, -1):
-        if word[i].isdigit():
-            return word[i]
-    raise ValueError(f"No digits in word {word}")
+def replace_words_with_numbers(data):
+    for index in range(len(data)):
+        for i in range(9):
+            data[index] = data[index].replace(digits[i], str(i + 1))
+    return data
 
 
 if __name__ == '__main__':
-    data = read_file('day_1/sample.txt')
-    print(calculate_sum(data))
+    data = read_file('day_1/sample2.txt')
+    print(data)
+    data = replace_words_with_numbers(data)
+    print(data)
+    # print(calculate_sum(data))
