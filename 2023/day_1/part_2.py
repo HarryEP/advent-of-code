@@ -14,8 +14,6 @@ def replace_words_with_numbers(data):
 
 
 if __name__ == '__main__':
-    data = read_file('day_1/sample2.txt')
-    print(data)
+    data = read_file('day_1/input.txt')
     data = replace_words_with_numbers(data)
-    print(data)
-    print(calculate_sum(data))
+    print(calculate_sum(data))  # This is the answer to the problem
