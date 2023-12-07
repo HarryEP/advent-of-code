@@ -36,5 +36,5 @@ def count_valid_games(data: list[str]) -> int:
 
 
 if __name__ == "__main__":
-    data = read_file('day_2/sample1.txt')
+    data = read_file('day_2/input.txt')
     print(count_valid_games(data))  # answer printed here
