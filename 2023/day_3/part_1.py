@@ -25,6 +25,6 @@ def total_part_numbers(part_numbers: list[int]):
 
 if __name__ == "__main__":
     print(len(read_file("day_3/sample.txt")[0]))
-    data = read_file("day_3/sample.txt")
+    data = read_file("day_3/input.txt")
     grid = get_grid(data)
     print(grid)
