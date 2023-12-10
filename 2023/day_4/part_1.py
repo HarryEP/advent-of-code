@@ -7,9 +7,14 @@ def read_file(file_name):
 
 def scratchcard_value(scratchcard: str) -> int:
     winning_numbers, card_numbers = scratchcard.split("|")
-    print(winning_numbers)
-    print(card_numbers)
-    return 0
+    total = 0
+    for num in winning_numbers.split():
+        if num in card_numbers.split():
+            if total == 0:
+                total = 1
+            else:
+                total *= 2
+    return total
 
 
 def sum_up_scratchcards(data: list[str]) -> int:
