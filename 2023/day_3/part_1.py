@@ -5,7 +5,8 @@ def read_file(file_name):
     return data.split('\n')
 
 
-def get_grid(data: list[str]) -> list[list[str]]:
+def create_grid(data: list[str]) -> list[list[str]]:
+    '''creates a grid'''
     grid = []
     for line in data:
         new_line = []
@@ -16,6 +17,7 @@ def get_grid(data: list[str]) -> list[list[str]]:
 
 
 def get_part_numbers(grid: list[list[str]], size: int) -> list[int]:
+    '''puts all the part numbers in one list'''
     part_numbers = []
     for y in range(size):
         number = ''
@@ -65,5 +67,5 @@ def check_for_symbol(x: int, y: int, grid: list[list[str]], symbol: bool, maximu
 if __name__ == "__main__":
     grid_size = len(read_file("day_3/input.txt")[0])
     data = read_file("day_3/input.txt")
-    grid = get_grid(data)
+    grid = create_grid(data)
     print(sum(get_part_numbers(grid, grid_size)))  # this is the solution
