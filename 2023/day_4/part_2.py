@@ -31,10 +31,9 @@ def set_card_quantity_dictionary(num_of_cards: int) -> dict:
     card_quantity = {}
     for i in range(1, num_of_cards+1):
         card_quantity[i] = 1
-    print(card_quantity)
     return card_quantity
 
 
 if __name__ == "__main__":
-    data = read_file("day_4/sample.txt")
+    data = read_file("day_4/input.txt")
     print(sum_up_scratchcards(data))  # this is the solution printed
