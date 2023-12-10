@@ -21,16 +21,23 @@ def get_part_numbers(grid: list[list[str]], size: int) -> list[int]:
         number = ''
         symbol = False
         for x in range(size):
-            if grid[y][x].isdigit():
+            if grid[y][x].isdigit() and x == (size - 1):
                 number += grid[y][x]
                 if not (symbol):
-                    symbol = check_for_symbol(x, y, grid, symbol, size - 1)
+                    symbol = check_for_symbol(x, y, grid, symbol, size-1)
+                if symbol:
+                    part_numbers.append(int(number))
+                symbol = False
+                number = ''
+            elif grid[y][x].isdigit():
+                number += grid[y][x]
+                if not (symbol):
+                    symbol = check_for_symbol(x, y, grid, symbol, size-1)
             else:
                 if symbol:
                     part_numbers.append(int(number))
                 symbol = False
                 number = ''
-    print(part_numbers)
     return part_numbers
 
 
@@ -59,5 +66,4 @@ if __name__ == "__main__":
     grid_size = len(read_file("day_3/sample.txt")[0])
     data = read_file("day_3/sample.txt")
     grid = get_grid(data)
-    # sum(get_part_numbers) later
-    print(sum(get_part_numbers(grid, grid_size)))
+    print(sum(get_part_numbers(grid, grid_size)))  # this is the solution
