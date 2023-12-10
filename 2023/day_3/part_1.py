@@ -63,7 +63,7 @@ def check_for_symbol(x: int, y: int, grid: list[list[str]], symbol: bool, maximu
 
 
 if __name__ == "__main__":
-    grid_size = len(read_file("day_3/sample.txt")[0])
-    data = read_file("day_3/sample.txt")
+    grid_size = len(read_file("day_3/input.txt")[0])
+    data = read_file("day_3/input.txt")
     grid = get_grid(data)
     print(sum(get_part_numbers(grid, grid_size)))  # this is the solution
