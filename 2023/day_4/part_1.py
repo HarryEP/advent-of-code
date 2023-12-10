@@ -26,5 +26,5 @@ def sum_up_scratchcards(data: list[str]) -> int:
 
 
 if __name__ == "__main__":
-    data = read_file("day_4/sample.txt")
-    print(sum_up_scratchcards(data))
+    data = read_file("day_4/input.txt")
+    print(sum_up_scratchcards(data))  # this is the solution printed
