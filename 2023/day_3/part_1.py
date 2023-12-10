@@ -20,12 +20,26 @@ def get_part_numbers(grid: list[list[str]], size: int) -> list[int]:
         for x in range(size):
             symbol = False
             if grid[y][x].isdigit():
-                symbol = check_for_symbol(x, y, grid, symbol, size)
+                symbol = check_for_symbol(x, y, grid, symbol, size - 1)
                 print(symbol)
 
 
-def check_for_symbol(x: int, y: int, grid: list[list[str]], symbol: bool, size: int) -> bool:
+def check_for_symbol(x: int, y: int, grid: list[list[str]], symbol: bool, maximum: int) -> bool:
     if x != 0 and y != 0 and not (grid[y-1][x-1] == '.' or grid[y-1][x-1].isdigit()):
+        return True
+    if x != 0 and not (grid[y][x-1] == '.' or grid[y][x-1].isdigit()):
+        return True
+    if x != 0 and y != maximum and not (grid[y+1][x-1] == '.' or grid[y+1][x-1].isdigit()):
+        return True
+    if y != 0 and not (grid[y-1][x] == '.' or grid[y-1][x].isdigit()):
+        return True
+    if y != maximum and not (grid[y+1][x] == '.' or grid[y+1][x].isdigit()):
+        return True
+    if x != maximum and y != 0 and not (grid[y-1][x+1] == '.' or grid[y-1][x+1].isdigit()):
+        return True
+    if x != maximum and not (grid[y][x+1] == '.' or grid[y][x+1].isdigit()):
+        return True
+    if x != maximum and y != maximum and not (grid[y+1][x+1] == '.' or grid[y+1][x+1].isdigit()):
         return True
     return False
 
