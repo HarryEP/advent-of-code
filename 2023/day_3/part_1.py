@@ -16,15 +16,26 @@ def get_grid(data: list[str]) -> list[list[str]]:
 
 
 def get_part_numbers(grid: list[list[str]], size: int) -> list[int]:
+    part_numbers = []
     for y in range(size):
+        number = ''
+        symbol = False
         for x in range(size):
-            symbol = False
             if grid[y][x].isdigit():
-                symbol = check_for_symbol(x, y, grid, symbol, size - 1)
-                print(symbol)
+                number += grid[y][x]
+                if not (symbol):
+                    symbol = check_for_symbol(x, y, grid, symbol, size - 1)
+            else:
+                if symbol:
+                    part_numbers.append(int(number))
+                symbol = False
+                number = ''
+    print(part_numbers)
+    return part_numbers
 
 
 def check_for_symbol(x: int, y: int, grid: list[list[str]], symbol: bool, maximum: int) -> bool:
+    '''checks if a symbol border the digit selected'''
     if x != 0 and y != 0 and not (grid[y-1][x-1] == '.' or grid[y-1][x-1].isdigit()):
         return True
     if x != 0 and not (grid[y][x-1] == '.' or grid[y][x-1].isdigit()):
@@ -48,5 +59,5 @@ if __name__ == "__main__":
     grid_size = len(read_file("day_3/sample.txt")[0])
     data = read_file("day_3/sample.txt")
     grid = get_grid(data)
-    get_part_numbers(grid, grid_size)  # sum(get_part_numbers) later
-    print(grid)
+    # sum(get_part_numbers) later
+    print(sum(get_part_numbers(grid, grid_size)))
