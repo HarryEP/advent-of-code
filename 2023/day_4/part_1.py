@@ -6,6 +6,7 @@ def read_file(file_name):
 
 
 def scratchcard_value(scratchcard: str) -> int:
+    '''finding scratchcard value for each scratchcard'''
     winning_numbers, card_numbers = scratchcard.split("|")
     total = 0
     for num in winning_numbers.split():
@@ -18,6 +19,7 @@ def scratchcard_value(scratchcard: str) -> int:
 
 
 def sum_up_scratchcards(data: list[str]) -> int:
+    '''counts the total amount of points'''
     total = 0
     for scratchcard in data:
         card = scratchcard.split(":")[1]
