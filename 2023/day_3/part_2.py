@@ -13,8 +13,8 @@ def get_gear_numbers(grid: list[list[str]], size: int) -> list[int]:
             if grid[y][x].isdigit() and x == (size - 1):
                 number += grid[y][x]
                 if not star:
-                    star, star_locations = check_for_star(
-                        x, y, grid, star, size-1, star_locations, star_numbers)
+                    star = check_for_star(
+                        x, y, grid, star, size-1, star_locations, star_numbers, int(number))
                 if star:
                     gear_numbers.append(int(number))
                 star = False
@@ -22,14 +22,14 @@ def get_gear_numbers(grid: list[list[str]], size: int) -> list[int]:
             elif grid[y][x].isdigit():
                 number += grid[y][x]
                 if not star:
-                    star, star_locations = check_for_star(
-                        x, y, grid, star, size-1, star_locations, star_numbers)
+                    star = check_for_star(
+                        x, y, grid, star, size-1, star_locations, star_numbers, int(number))
             else:
                 if star:
                     gear_number = check_if_gear_number(
                         star_locations, star_numbers)
                     if gear_number != 0:
-                        gear_numbers.append()
+                        gear_numbers.append(int(number))
                 star = False
                 number = ''
     return gear_numbers
@@ -40,33 +40,73 @@ def check_if_gear_number(star_locations, star_numbers):
 
 
 def check_for_star(x: int, y: int, grid: list[list[str]], symbol: bool, maximum: int,
-                   star_locations: list, star_numbers: dict) -> bool:
+                   star_locations: list, star_numbers: dict, number: int) -> bool:
     '''checks if a star borders the digit selected'''
     if x != 0 and y != 0 and grid[y-1][x-1] == '*':
         star_locations.append(grid[y-1][x-1])
+        try:
+            star_numbers[(y-1, x-1)].append(number)
+        except:
+            star_numbers[(y-1, x-1)] = []
+            star_numbers[(y-1, x-1)].append(number)
         return True
     if x != 0 and grid[y][x-1] == '*':
         star_locations.append(grid[y][x-1])
+        try:
+            star_numbers[(y, x-1)].append(number)
+        except:
+            star_numbers[(y, x-1)] = []
+            star_numbers[(y, x-1)].append(number)
         return True
     if x != 0 and y != maximum and grid[y+1][x-1] == '*':
         star_locations.append(grid[y+1][x-1])
+        try:
+            star_numbers[(y+1, x-1)].append(number)
+        except:
+            star_numbers[(y+1, x-1)] = []
+            star_numbers[(y+1, x-1)].append(number)
         return True
     if y != 0 and grid[y-1][x] == '*':
         star_locations.append(grid[y-1][x])
+        try:
+            star_numbers[(y-1, x)].append(number)
+        except:
+            star_numbers[(y-1, x)] = []
+            star_numbers[(y-1, x)].append(number)
         return True
     if y != maximum and grid[y+1][x] == '*':
         star_locations.append(grid[y+1][x])
+        try:
+            star_numbers[(y+1, x)].append(number)
+        except:
+            star_numbers[(y+1, x)] = []
+            star_numbers[(y+1, x)].append(number)
         return True
     if x != maximum and y != 0 and grid[y-1][x+1] == '*':
         star_locations.append(grid[y-1][x+1])
+        try:
+            star_numbers[(y-1, x+1)].append(number)
+        except:
+            star_numbers[(y-1, x+1)] = []
+            star_numbers[(y-1, x+1)].append(number)
         return True
     if x != maximum and grid[y][x+1] == '*':
         star_locations.append(grid[y][x+1])
+        try:
+            star_numbers[(y, x+1)].append(number)
+        except:
+            star_numbers[(y, x+1)] = []
+            star_numbers[(y, x+1)].append(number)
         return True
     if x != maximum and y != maximum and grid[y+1][x+1] == '*':
         star_locations.append(grid[y+1][x+1])
+        try:
+            star_numbers[(y+1, x+1)].append(number)
+        except:
+            star_numbers[(y+1, x+1)] = []
+            star_numbers[(y+1, x+1)].append(number)
         return True
-    return False, star_locations
+    return False
 
 
 if __name__ == "__main__":
