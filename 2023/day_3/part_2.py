@@ -26,6 +26,7 @@ def get_gear_numbers(grid: list[list[str]], size: int) -> list[int]:
                         x, y, grid, star, size-1, star_locations, star_numbers, int(number))
             else:
                 if star:
+                    print(x, y, star_locations, star_numbers)
                     gear_number = check_if_gear_number(
                         star_locations, star_numbers)
                     if gear_number != 0:
@@ -36,7 +37,10 @@ def get_gear_numbers(grid: list[list[str]], size: int) -> list[int]:
 
 
 def check_if_gear_number(star_locations, star_numbers):
-    pass
+    for number in star_numbers:
+        if len(number) == 2:
+            return number[0] * number[1]
+    return 0
 
 
 def check_for_star(x: int, y: int, grid: list[list[str]], symbol: bool, maximum: int,
