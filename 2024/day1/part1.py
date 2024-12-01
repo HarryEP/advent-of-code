@@ -14,7 +14,7 @@ def calculate_distance(values: list[str]) -> int:
     return total_distance
 
 
-def get_lists(numbers: list[str]) -> (list[int], list[int]):
+def get_lists(numbers: list[str]) -> tuple:
     'returns left and right lists in order'
     first_numbers = []
     second_numbers = []
