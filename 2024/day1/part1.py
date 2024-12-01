@@ -7,20 +7,26 @@ def read_file(file_name: str) -> list[str]:
 
 def calculate_distance(values: list[str]) -> int:
     '''calculates the distance between the two values'''
-    first_numbers = []
-    second_numbers = []
-    for pair in values:
-        one, two = pair.split("   ")
-        first_numbers.append(int(one))
-        second_numbers.append(int(two))
-    first_numbers = sorted(first_numbers)
-    second_numbers = sorted(second_numbers)
+    left, right = get_lists(values)
     total_distance = 0
-    for index, number in enumerate(first_numbers):
-        total_distance += abs(second_numbers[index]-first_numbers[index])
+    for index, number in enumerate(left):
+        total_distance += abs(right[index]-number)
     return total_distance
 
 
+def get_lists(numbers: list[str]) -> (list[int], list[int]):
+    'returns left and right lists in order'
+    first_numbers = []
+    second_numbers = []
+    for pair in numbers:
+        one, two = pair.split("   ")
+        first_numbers.append(int(one))
+        second_numbers.append(int(two))
+    left = sorted(first_numbers)
+    right = sorted(second_numbers)
+    return left, right
+
+
 if __name__ == "__main__":
-    data = read_file('day1/input_m1.txt')
+    data = read_file('day1/input.txt')
     print(calculate_distance(data))
