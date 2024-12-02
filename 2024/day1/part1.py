@@ -28,5 +28,5 @@ def get_lists(numbers: list[str]) -> tuple:
 
 
 if __name__ == "__main__":
-    data = read_file('day1/input.txt')
+    data = read_file('day1/main.txt')
     print(calculate_distance(data))
