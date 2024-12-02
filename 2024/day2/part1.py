@@ -17,6 +17,8 @@ def check_report(info: str) -> bool:
             if int(level) < current:
                 higher = False
         if index != 0:
+            if int(breakdown[index]) == int(breakdown[index-1]):
+                return False
             if higher:
                 if int(level) - current in [1, 2, 3]:
                     current = int(level)
@@ -40,5 +42,5 @@ def count_safe(all_data: list[str]) -> int:
 
 
 if __name__ == "__main__":
-    data = read_file('day2/sample.txt')
+    data = read_file('day2/main.txt')
     print(count_safe(data))
